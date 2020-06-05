@@ -10,13 +10,13 @@ source:
   sha256: 6341cd7f45c471645f61027fc061dc9e5a113bcc7f73fb82f69c19a173dbbea1
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: "{{ PYTHON }} -m pip install . -vv"
 
 requirements:
   host:
-    - pip
+    - pip ==20.0.2
     - python >=3.7
     - poetry
   run:
@@ -48,4 +48,4 @@ about:
 
 extra:
   recipe-maintainers:
-    - albop
+          - albop
