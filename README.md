@@ -5,7 +5,7 @@ Home: https://github.com/EconForge/dolo.py
 
 Package license: BSD-2-Clause
 
-Feedstock license: BSD 3-Clause
+Feedstock license: BSD-3-Clause
 
 Summary: Dolo Modeling Language
 
