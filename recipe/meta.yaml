@@ -1,18 +1,18 @@
 {% set name = "dolo" %}
-{% set version = "0.4.9.14" %}
+{% set version = "0.4.9.15" %}
 
 package:
-  name: "{{ name|lower }}"
-  version: "{{ version }}"
+  name: {{ name|lower }}
+  version: {{ version }}
 
 source:
-  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
-  sha256: ac991215c3a2128b2bda6ff64220d94a90a6576ba5ab13d714496404d9545d43 
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 3778634e616e014635915a06876e97e699a730fa98646eba0ef478a3eb7bc109
 
 build:
   number: 0
   noarch: python
-  script: "{{ PYTHON }} -m pip install . -vv"
+  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
@@ -43,8 +43,8 @@ about:
   license: BSD-2-Clause
   license_family: BSD
   license_file: LICENSE
-  summary: "Dolo Modeling Language"
+  summary: Dolo Modeling Language
 
 extra:
   recipe-maintainers:
-          - albop
+    - albop
