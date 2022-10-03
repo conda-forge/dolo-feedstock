@@ -1,5 +1,5 @@
 {% set name = "dolo" %}
-{% set version = "0.4.9.15" %}
+{% set version = "0.4.9.18" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,9 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 3778634e616e014635915a06876e97e699a730fa98646eba0ef478a3eb7bc109
+  sha256: ca246fbda29dba4acbbaf2f3e822c97e3b129bd266c41177b84806f9210f78a9
+  patches:
+    - fix_poetry.patch
 
 build:
   number: 0
@@ -16,21 +18,23 @@ build:
 
 requirements:
   host:
-    - pip ==21.0.1
-    - python >=3.7
+    - pip ==22.2.2
+    - python >=3.8,<3.11
     - poetry
   run:
-    - dolang ==0.0.14
-    - interpolation >=2.1.6
+    - dolang ==0.0.18
+    - interpolation >=2.1.8
     - ipython >=7.12.0
     - matplotlib-base >=3.0
     - multipledispatch >=0.6.0
-    - numpy >=1.18.1
-    - pandas >=1.0.1
-    - python >=3.7
+    - sympy >=1.10.1
+    - numba >=0.55.1
+    - numpy >=1.22.2
+    - pandas >=1.4.2
+    - python >=3.8
     - pyyaml >=5.3
-    - quantecon >=0.4
-    - scipy >=1.4.1
+    - quantecon >=0.5.3
+    - scipy >=1.9.1
     - xarray >=0.15.0
 
 test:
