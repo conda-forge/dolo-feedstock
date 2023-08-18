@@ -1,11 +1,11 @@
-About dolo
-==========
+About dolo-feedstock
+====================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/dolo-feedstock/blob/main/LICENSE.txt)
 
 Home: https://github.com/EconForge/dolo.py
 
 Package license: BSD-2-Clause
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/dolo-feedstock/blob/main/LICENSE.txt)
 
 Summary: Dolo Modeling Language
 
