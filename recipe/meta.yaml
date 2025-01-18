@@ -6,20 +6,20 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: ca246fbda29dba4acbbaf2f3e822c97e3b129bd266c41177b84806f9210f78a9
   patches:
     - fix_poetry.patch
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
     - pip ==22.2.2
-    - python >=3.8,<3.11
+    - python {{ python_min }}
     - poetry
   run:
     - dolang ==0.0.18
@@ -31,13 +31,15 @@ requirements:
     - numba >=0.55.1
     - numpy >=1.22.2
     - pandas >=1.4.2
-    - python >=3.8
+    - python >={{ python_min }}
     - pyyaml >=5.3
     - quantecon >=0.5.3
     - scipy >=1.9.1
     - xarray >=0.15.0
 
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - dolang
     - dolang.tests
