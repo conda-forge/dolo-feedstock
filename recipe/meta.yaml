@@ -1,5 +1,5 @@
 {% set name = "dolo" %}
-{% set version = "0.4.9.18" %}
+{% set version = "0.4.9.19" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: ca246fbda29dba4acbbaf2f3e822c97e3b129bd266c41177b84806f9210f78a9
+  sha256: aa1a8f60f0f8ee96f614037154a1a3d1369be0111f070928654c3ceff77e95fb
   patches:
     - fix_poetry.patch
 
