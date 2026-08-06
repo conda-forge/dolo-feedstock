@@ -1,46 +1,52 @@
 {% set name = "dolo" %}
-{% set version = "0.4.9.18" %}
+{% set version = "0.4.9.20" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: ca246fbda29dba4acbbaf2f3e822c97e3b129bd266c41177b84806f9210f78a9
+  url: https://files.pythonhosted.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: d9c41bc96fa31629289a0fcc0083be0df3076cae8bf9aee634f8d0006125b4d2
   patches:
-    - fix_poetry.patch
+    - support-modern-python.patch
 
 build:
   number: 0
   noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
   host:
-    - pip ==22.2.2
-    - python >=3.8,<3.11
-    - poetry
+    - pip
+    - python {{ python_min }}
+    - poetry-core >=1.8
   run:
-    - dolang ==0.0.18
-    - interpolation >=2.1.8
+    - python >={{ python_min }},<3.14
+    - dolang >=0.0.20,<0.0.22
+    - interpolation >=2.2.7,<3
     - ipython >=7.12.0
-    - matplotlib-base >=3.0
-    - multipledispatch >=0.6.0
+    - matplotlib-base >=3.6,<4
+    - multipledispatch >=0.6,<0.7
     - sympy >=1.10.1
-    - numba >=0.55.1
-    - numpy >=1.22.2
-    - pandas >=1.4.2
-    - python >=3.8
-    - pyyaml >=5.3
-    - quantecon >=0.5.3
-    - scipy >=1.9.1
-    - xarray >=0.15.0
+    - numba >=0.59.1
+    - numpy >=1.23.1
+    - pandas >=1.5,<3
+    - pyyaml >=6,<7
+    - quantecon >=0.7.2,<1
+    - scipy >=1.10,<2
+    - xarray >=2022.6
 
 test:
   imports:
-    - dolang
-    - dolang.tests
+    - dolo
+    - dolo.algos.fb
+    - dolo.numeric.processes
+  requires:
+    - pip
+    - python {{ python_min }}
+  commands:
+    - pip check
 
 about:
   home: https://github.com/EconForge/dolo.py
@@ -52,3 +58,4 @@ about:
 extra:
   recipe-maintainers:
     - albop
+    - anutosh491
